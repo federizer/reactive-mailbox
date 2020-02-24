@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package auth;
+
+message SignupRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message SignupResponse {
+    string token = 1;
+}
+
+message SigninRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message SigninResponse {
+    string token = 1;
+}
+
+message SignoutRequest {
+    string token = 1;
+}
+
+message SignoutResponse {
+}
+
+message ResetPasswordRequest {
+    string token = 1;
+    string password = 2;
+}
+
+message VerifyEmailRequest {
+    string email = 1;
+}
+
+message UserInfoResponse {
+    string username = 1;
+    string email = 2;
+    string name = 3;
+    string given_name = 4;
+    string family_name = 5;
+    oneof picture {
+        bytes data = 6;
+        string uri = 7;
+    }
+}

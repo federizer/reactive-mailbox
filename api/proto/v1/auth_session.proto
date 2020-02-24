@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package auth;
+
+import "auth.proto";
+// import "google/protobuf/empty.proto";
+
+message AuthSessionRequest {
+    string token = 1;
+}
+
+message AuthSessionResponse {
+    SignupResponse signup = 1;
+    SigninResponse signin = 2;
+    SignoutResponse signout = 3;
+    UserInfoResponse user_info = 4;
+}
+
+service AuthSessionService {
+    rpc RequestAuthSession (AuthSessionRequest) returns (stream AuthSessionResponse) {
+    }
+    rpc Signup (SignupRequest) returns (SignupResponse) {
+    }
+    rpc Signin (SigninRequest) returns (SigninResponse) {
+    }
+    rpc Signout (SignoutRequest) returns (SignoutResponse) {
+    }
+    /*rpc ResetPassword (ResetPasswordRequest) returns (google.protobuf.Empty) {
+    }
+    rpc VerifyEmail (VerifyEmailRequest) returns (google.protobuf.Empty) {
+    }*/
+}
