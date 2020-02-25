@@ -15,10 +15,11 @@ const AuthSessionRequest$json = const {
 const AuthSessionResponse$json = const {
   '1': 'AuthSessionResponse',
   '2': const [
-    const {'1': 'signup', '3': 1, '4': 1, '5': 11, '6': '.auth.SignupResponse', '10': 'signup'},
-    const {'1': 'signin', '3': 2, '4': 1, '5': 11, '6': '.auth.SigninResponse', '10': 'signin'},
-    const {'1': 'signout', '3': 3, '4': 1, '5': 11, '6': '.auth.SignoutResponse', '10': 'signout'},
-    const {'1': 'user_info', '3': 4, '4': 1, '5': 11, '6': '.auth.UserInfoResponse', '10': 'userInfo'},
+    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+    const {'1': 'signup', '3': 2, '4': 1, '5': 11, '6': '.auth.SignupResponse', '10': 'signup'},
+    const {'1': 'signin', '3': 3, '4': 1, '5': 11, '6': '.auth.SigninResponse', '10': 'signin'},
+    const {'1': 'signout', '3': 4, '4': 1, '5': 11, '6': '.auth.SignoutResponse', '10': 'signout'},
+    const {'1': 'user_info', '3': 5, '4': 1, '5': 11, '6': '.auth.UserInfoResponse', '10': 'userInfo'},
   ],
 };
 

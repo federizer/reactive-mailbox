@@ -10,10 +10,11 @@ message AuthSessionRequest {
 }
 
 message AuthSessionResponse {
-    SignupResponse signup = 1;
-    SigninResponse signin = 2;
-    SignoutResponse signout = 3;
-    UserInfoResponse user_info = 4;
+    string token = 1;
+    SignupResponse signup = 2;
+    SigninResponse signin = 3;
+    SignoutResponse signout = 4;
+    UserInfoResponse user_info = 5;
 }
 
 service AuthSessionService {

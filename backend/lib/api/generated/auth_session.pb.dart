@@ -44,10 +44,11 @@ class AuthSessionRequest extends $pb.GeneratedMessage {
 
 class AuthSessionResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('AuthSessionResponse', package: const $pb.PackageName('auth'), createEmptyInstance: create)
-    ..aOM<$1.SignupResponse>(1, 'signup', subBuilder: $1.SignupResponse.create)
-    ..aOM<$1.SigninResponse>(2, 'signin', subBuilder: $1.SigninResponse.create)
-    ..aOM<$1.SignoutResponse>(3, 'signout', subBuilder: $1.SignoutResponse.create)
-    ..aOM<$1.UserInfoResponse>(4, 'userInfo', subBuilder: $1.UserInfoResponse.create)
+    ..aOS(1, 'token')
+    ..aOM<$1.SignupResponse>(2, 'signup', subBuilder: $1.SignupResponse.create)
+    ..aOM<$1.SigninResponse>(3, 'signin', subBuilder: $1.SigninResponse.create)
+    ..aOM<$1.SignoutResponse>(4, 'signout', subBuilder: $1.SignoutResponse.create)
+    ..aOM<$1.UserInfoResponse>(5, 'userInfo', subBuilder: $1.UserInfoResponse.create)
     ..hasRequiredFields = false
   ;
 
@@ -67,47 +68,56 @@ class AuthSessionResponse extends $pb.GeneratedMessage {
   static AuthSessionResponse _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.SignupResponse get signup => $_getN(0);
+  $core.String get token => $_getSZ(0);
   @$pb.TagNumber(1)
-  set signup($1.SignupResponse v) { setField(1, v); }
+  set token($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasSignup() => $_has(0);
+  $core.bool hasToken() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSignup() => clearField(1);
-  @$pb.TagNumber(1)
-  $1.SignupResponse ensureSignup() => $_ensure(0);
+  void clearToken() => clearField(1);
 
   @$pb.TagNumber(2)
-  $1.SigninResponse get signin => $_getN(1);
+  $1.SignupResponse get signup => $_getN(1);
   @$pb.TagNumber(2)
-  set signin($1.SigninResponse v) { setField(2, v); }
+  set signup($1.SignupResponse v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasSignin() => $_has(1);
+  $core.bool hasSignup() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSignin() => clearField(2);
+  void clearSignup() => clearField(2);
   @$pb.TagNumber(2)
-  $1.SigninResponse ensureSignin() => $_ensure(1);
+  $1.SignupResponse ensureSignup() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $1.SignoutResponse get signout => $_getN(2);
+  $1.SigninResponse get signin => $_getN(2);
   @$pb.TagNumber(3)
-  set signout($1.SignoutResponse v) { setField(3, v); }
+  set signin($1.SigninResponse v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSignout() => $_has(2);
+  $core.bool hasSignin() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSignout() => clearField(3);
+  void clearSignin() => clearField(3);
   @$pb.TagNumber(3)
-  $1.SignoutResponse ensureSignout() => $_ensure(2);
+  $1.SigninResponse ensureSignin() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $1.UserInfoResponse get userInfo => $_getN(3);
+  $1.SignoutResponse get signout => $_getN(3);
   @$pb.TagNumber(4)
-  set userInfo($1.UserInfoResponse v) { setField(4, v); }
+  set signout($1.SignoutResponse v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasUserInfo() => $_has(3);
+  $core.bool hasSignout() => $_has(3);
   @$pb.TagNumber(4)
-  void clearUserInfo() => clearField(4);
+  void clearSignout() => clearField(4);
   @$pb.TagNumber(4)
-  $1.UserInfoResponse ensureUserInfo() => $_ensure(3);
+  $1.SignoutResponse ensureSignout() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  $1.UserInfoResponse get userInfo => $_getN(4);
+  @$pb.TagNumber(5)
+  set userInfo($1.UserInfoResponse v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasUserInfo() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearUserInfo() => clearField(5);
+  @$pb.TagNumber(5)
+  $1.UserInfoResponse ensureUserInfo() => $_ensure(4);
 }
 
