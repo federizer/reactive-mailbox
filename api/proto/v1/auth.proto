@@ -2,38 +2,56 @@ syntax = "proto3";
 
 package auth;
 
-message SignupRequest {
+enum AuthState {
+    SUCCESS = 0;
+    FAILURE = 1;
+    USER_SIGNED_UP = 2;
+    USER_SIGNED_IN = 3;
+    USER_SIGNED_OUT = 4;
+}
+
+message Credentials {
     string username = 1;
     string password = 2;
 }
 
-message SignupResponse {
-    string token = 1;
+message SignUpRequest {
+    Credentials credentials = 1;
 }
 
-message SigninRequest {
-    string username = 1;
-    string password = 2;
+message SignInRequest {
+    oneof auth {
+        Credentials credentials = 1;
+        string refresh_token = 2;
+    }
 }
 
-message SigninResponse {
-    string token = 1;
+message SignOutRequest {
+    string refresh_token = 1;
 }
 
-message SignoutRequest {
-    string token = 1;
-}
-
-message SignoutResponse {
+message SignOutResponse {
+    AuthState state = 1;
 }
 
 message ResetPasswordRequest {
-    string token = 1;
-    string password = 2;
+    string refresh_token = 1;
+    string new_password = 2;
+}
+
+message ResetPasswordRespone {
+    string access_token = 1;
+    string refresh_token = 2;
 }
 
 message VerifyEmailRequest {
-    string email = 1;
+    string refresh_token = 1;
+    string email = 2;
+}
+
+message VerifyEmailRespone {
+    string access_token = 1;
+    string refresh_token = 2;
 }
 
 message UserInfoResponse {

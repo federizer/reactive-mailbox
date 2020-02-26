@@ -5,26 +5,19 @@ package auth;
 import "auth.proto";
 // import "google/protobuf/empty.proto";
 
-message AuthSessionRequest {
-    string token = 1;
-}
-
-message AuthSessionResponse {
-    string token = 1;
-    SignupResponse signup = 2;
-    SigninResponse signin = 3;
-    SignoutResponse signout = 4;
-    UserInfoResponse user_info = 5;
+message AuthSession {
+    AuthState state = 1;
+    string access_token = 2;
+    string refresh_token = 3;
+    UserInfoResponse user_info = 4;
 }
 
 service AuthSessionService {
-    rpc RequestAuthSession (AuthSessionRequest) returns (stream AuthSessionResponse) {
+    /*rpc Signup (SignUpRequest) returns (stream AuthSession) {
+    }*/
+    rpc Signin (SignInRequest) returns (stream AuthSession) {
     }
-    rpc Signup (SignupRequest) returns (SignupResponse) {
-    }
-    rpc Signin (SigninRequest) returns (SigninResponse) {
-    }
-    rpc Signout (SignoutRequest) returns (SignoutResponse) {
+    rpc Signout (SignOutRequest) returns (SignOutResponse) {
     }
     /*rpc ResetPassword (ResetPasswordRequest) returns (google.protobuf.Empty) {
     }

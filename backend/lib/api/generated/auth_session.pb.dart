@@ -9,115 +9,70 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'auth.pb.dart' as $1;
+import 'auth.pb.dart' as $0;
 
-class AuthSessionRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('AuthSessionRequest', package: const $pb.PackageName('auth'), createEmptyInstance: create)
-    ..aOS(1, 'token')
+import 'auth.pbenum.dart' as $0;
+
+class AuthSession extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('AuthSession', package: const $pb.PackageName('auth'), createEmptyInstance: create)
+    ..e<$0.AuthState>(1, 'state', $pb.PbFieldType.OE, defaultOrMaker: $0.AuthState.SUCCESS, valueOf: $0.AuthState.valueOf, enumValues: $0.AuthState.values)
+    ..aOS(2, 'accessToken')
+    ..aOS(3, 'refreshToken')
+    ..aOM<$0.UserInfoResponse>(4, 'userInfo', subBuilder: $0.UserInfoResponse.create)
     ..hasRequiredFields = false
   ;
 
-  AuthSessionRequest._() : super();
-  factory AuthSessionRequest() => create();
-  factory AuthSessionRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory AuthSessionRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  AuthSessionRequest clone() => AuthSessionRequest()..mergeFromMessage(this);
-  AuthSessionRequest copyWith(void Function(AuthSessionRequest) updates) => super.copyWith((message) => updates(message as AuthSessionRequest));
+  AuthSession._() : super();
+  factory AuthSession() => create();
+  factory AuthSession.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AuthSession.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  AuthSession clone() => AuthSession()..mergeFromMessage(this);
+  AuthSession copyWith(void Function(AuthSession) updates) => super.copyWith((message) => updates(message as AuthSession));
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static AuthSessionRequest create() => AuthSessionRequest._();
-  AuthSessionRequest createEmptyInstance() => create();
-  static $pb.PbList<AuthSessionRequest> createRepeated() => $pb.PbList<AuthSessionRequest>();
+  static AuthSession create() => AuthSession._();
+  AuthSession createEmptyInstance() => create();
+  static $pb.PbList<AuthSession> createRepeated() => $pb.PbList<AuthSession>();
   @$core.pragma('dart2js:noInline')
-  static AuthSessionRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AuthSessionRequest>(create);
-  static AuthSessionRequest _defaultInstance;
+  static AuthSession getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AuthSession>(create);
+  static AuthSession _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get token => $_getSZ(0);
+  $0.AuthState get state => $_getN(0);
   @$pb.TagNumber(1)
-  set token($core.String v) { $_setString(0, v); }
+  set state($0.AuthState v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasToken() => $_has(0);
+  $core.bool hasState() => $_has(0);
   @$pb.TagNumber(1)
-  void clearToken() => clearField(1);
-}
-
-class AuthSessionResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('AuthSessionResponse', package: const $pb.PackageName('auth'), createEmptyInstance: create)
-    ..aOS(1, 'token')
-    ..aOM<$1.SignupResponse>(2, 'signup', subBuilder: $1.SignupResponse.create)
-    ..aOM<$1.SigninResponse>(3, 'signin', subBuilder: $1.SigninResponse.create)
-    ..aOM<$1.SignoutResponse>(4, 'signout', subBuilder: $1.SignoutResponse.create)
-    ..aOM<$1.UserInfoResponse>(5, 'userInfo', subBuilder: $1.UserInfoResponse.create)
-    ..hasRequiredFields = false
-  ;
-
-  AuthSessionResponse._() : super();
-  factory AuthSessionResponse() => create();
-  factory AuthSessionResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory AuthSessionResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  AuthSessionResponse clone() => AuthSessionResponse()..mergeFromMessage(this);
-  AuthSessionResponse copyWith(void Function(AuthSessionResponse) updates) => super.copyWith((message) => updates(message as AuthSessionResponse));
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static AuthSessionResponse create() => AuthSessionResponse._();
-  AuthSessionResponse createEmptyInstance() => create();
-  static $pb.PbList<AuthSessionResponse> createRepeated() => $pb.PbList<AuthSessionResponse>();
-  @$core.pragma('dart2js:noInline')
-  static AuthSessionResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AuthSessionResponse>(create);
-  static AuthSessionResponse _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get token => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set token($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasToken() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearToken() => clearField(1);
+  void clearState() => clearField(1);
 
   @$pb.TagNumber(2)
-  $1.SignupResponse get signup => $_getN(1);
+  $core.String get accessToken => $_getSZ(1);
   @$pb.TagNumber(2)
-  set signup($1.SignupResponse v) { setField(2, v); }
+  set accessToken($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasSignup() => $_has(1);
+  $core.bool hasAccessToken() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSignup() => clearField(2);
-  @$pb.TagNumber(2)
-  $1.SignupResponse ensureSignup() => $_ensure(1);
+  void clearAccessToken() => clearField(2);
 
   @$pb.TagNumber(3)
-  $1.SigninResponse get signin => $_getN(2);
+  $core.String get refreshToken => $_getSZ(2);
   @$pb.TagNumber(3)
-  set signin($1.SigninResponse v) { setField(3, v); }
+  set refreshToken($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSignin() => $_has(2);
+  $core.bool hasRefreshToken() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSignin() => clearField(3);
-  @$pb.TagNumber(3)
-  $1.SigninResponse ensureSignin() => $_ensure(2);
+  void clearRefreshToken() => clearField(3);
 
   @$pb.TagNumber(4)
-  $1.SignoutResponse get signout => $_getN(3);
+  $0.UserInfoResponse get userInfo => $_getN(3);
   @$pb.TagNumber(4)
-  set signout($1.SignoutResponse v) { setField(4, v); }
+  set userInfo($0.UserInfoResponse v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasSignout() => $_has(3);
+  $core.bool hasUserInfo() => $_has(3);
   @$pb.TagNumber(4)
-  void clearSignout() => clearField(4);
+  void clearUserInfo() => clearField(4);
   @$pb.TagNumber(4)
-  $1.SignoutResponse ensureSignout() => $_ensure(3);
-
-  @$pb.TagNumber(5)
-  $1.UserInfoResponse get userInfo => $_getN(4);
-  @$pb.TagNumber(5)
-  set userInfo($1.UserInfoResponse v) { setField(5, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasUserInfo() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearUserInfo() => clearField(5);
-  @$pb.TagNumber(5)
-  $1.UserInfoResponse ensureUserInfo() => $_ensure(4);
+  $0.UserInfoResponse ensureUserInfo() => $_ensure(3);
 }
 
