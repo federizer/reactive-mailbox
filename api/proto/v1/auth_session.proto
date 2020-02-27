@@ -13,8 +13,8 @@ message AuthSession {
 }
 
 service AuthSessionService {
-    /*rpc Signup (SignUpRequest) returns (stream AuthSession) {
-    }*/
+    rpc Signup (SignUpRequest) returns (stream AuthSession) {
+    }
     rpc Signin (SignInRequest) returns (stream AuthSession) {
     }
     rpc Signout (SignOutRequest) returns (SignOutResponse) {

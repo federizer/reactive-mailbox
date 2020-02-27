@@ -15,6 +15,10 @@ import 'auth_session.pb.dart' as $1;
 export 'auth_session.pb.dart';
 
 class AuthSessionServiceClient extends $grpc.Client {
+  static final _$signup = $grpc.ClientMethod<$0.SignUpRequest, $1.AuthSession>(
+      '/auth.AuthSessionService/Signup',
+      ($0.SignUpRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $1.AuthSession.fromBuffer(value));
   static final _$signin = $grpc.ClientMethod<$0.SignInRequest, $1.AuthSession>(
       '/auth.AuthSessionService/Signin',
       ($0.SignInRequest value) => value.writeToBuffer(),
@@ -29,6 +33,13 @@ class AuthSessionServiceClient extends $grpc.Client {
   AuthSessionServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions options})
       : super(channel, options: options);
+
+  $grpc.ResponseStream<$1.AuthSession> signup($0.SignUpRequest request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$signup, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseStream(call);
+  }
 
   $grpc.ResponseStream<$1.AuthSession> signin($0.SignInRequest request,
       {$grpc.CallOptions options}) {
@@ -49,6 +60,13 @@ abstract class AuthSessionServiceBase extends $grpc.Service {
   $core.String get $name => 'auth.AuthSessionService';
 
   AuthSessionServiceBase() {
+    $addMethod($grpc.ServiceMethod<$0.SignUpRequest, $1.AuthSession>(
+        'Signup',
+        signup_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $0.SignUpRequest.fromBuffer(value),
+        ($1.AuthSession value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.SignInRequest, $1.AuthSession>(
         'Signin',
         signin_Pre,
@@ -65,6 +83,11 @@ abstract class AuthSessionServiceBase extends $grpc.Service {
         ($0.SignOutResponse value) => value.writeToBuffer()));
   }
 
+  $async.Stream<$1.AuthSession> signup_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.SignUpRequest> request) async* {
+    yield* signup(call, await request);
+  }
+
   $async.Stream<$1.AuthSession> signin_Pre(
       $grpc.ServiceCall call, $async.Future<$0.SignInRequest> request) async* {
     yield* signin(call, await request);
@@ -75,6 +98,8 @@ abstract class AuthSessionServiceBase extends $grpc.Service {
     return signout(call, await request);
   }
 
+  $async.Stream<$1.AuthSession> signup(
+      $grpc.ServiceCall call, $0.SignUpRequest request);
   $async.Stream<$1.AuthSession> signin(
       $grpc.ServiceCall call, $0.SignInRequest request);
   $async.Future<$0.SignOutResponse> signout(
