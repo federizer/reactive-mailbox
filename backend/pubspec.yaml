@@ -9,3 +9,5 @@ dependencies:
     path: ../../grpc-dart
   protobuf: ^1.0.1
   postgres_pool: ^2.0.0
+  uuid: ^2.0.4
+  jose: ^0.1.2

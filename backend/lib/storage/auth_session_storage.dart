@@ -1,35 +1,34 @@
 import 'dart:async';
+import 'package:uuid/uuid.dart';
 
 import 'package:server/api/generated/auth.pb.dart';
 import 'package:server/api/generated/auth_session.pbgrpc.dart';
 
 import 'package:server/utils/database.dart';
+import 'package:server/utils/jwt.dart';
 
 class AuthSessionStorage {
   static Stream<AuthSession> signup(SignUpRequest request) async* {
-    /*final pool = Database.getPgPool();
+    final pool = Database.getPgPool();
 
-    await pool.execute('CREATE TABLE tbl(id TEXT PRIMARY KEY);');*/
+    final rs = await pool.execute(
+        'INSERT INTO auth.user VALUES (@id, @username, @password_hash);',
+        substitutionValues: {
+          'id': Uuid().v4(),
+          'username': 'mike',
+          'password_hash': '1234'
+        });
 
-    final futures = <Future>[];
-
-    final f = Database.getPgPool().run((c) async {
-      final rs = await c.query(
-//        'SELECT COUNT(*) FROM auth.user WHERE username = @username',
-//        substitutionValues: {
-//          'username': 'mike@foo.org',
-//        },
-        'SELECT COUNT(*) FROM auth.user',
-      );
-      return rs[0][0];
-    });
-
-    futures.add(f);
-
-    await Future.wait(futures);
+    final jwt = await Jwt.token();
+    /*final payload = {
+      'username': request.credentials.username,
+      'exp': 1300819380,
+      'http://example.com/is_root': true
+    };
+    final token = jwt.encode(payload);*/
 
     yield AuthSession()
-      ..refreshToken = 'token1234'
+      ..refreshToken = jwt
       ..state = AuthState.USER_SIGNED_UP;
   }
 }
