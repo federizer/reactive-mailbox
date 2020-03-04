@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:uuid/uuid.dart';
 
-import 'package:server/api/generated/auth.pb.dart';
-import 'package:server/api/generated/auth_session.pbgrpc.dart';
+import 'package:server/api/generated/auth/auth.pb.dart';
+import 'package:server/api/generated/auth/auth_session.pbgrpc.dart';
 
 import 'package:server/utils/database.dart';
 import 'package:server/utils/jwt.dart';

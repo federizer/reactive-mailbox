@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package system;
+
+import "google/protobuf/empty.proto";
+
+message AliveResponse {
+    string msg = 1;
+}
+
+service SystemService {
+    rpc Alive (google.protobuf.Empty) returns (AliveResponse) {
+    }
+}

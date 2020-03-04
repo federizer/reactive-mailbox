@@ -1,2 +1,33 @@
 # IntelliJ
 .idea
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Certificates
+backend/certs
+
+# Binary files
+backend/bin
+
+# Database files
+backend/db
+
+# File repository
+backend/filerepo
+
+# Temporary files
+backend/tmp
+
+# Test binary, built with `go test -c`
+backend/go/*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+backend/go/*.out
+
+# Dependency directories (remove the comment below to include it)
+# backend/go/vendor/
