@@ -4,7 +4,7 @@ environment:
   sdk: '>=2.2.0 <3.0.0'
 
 dependencies:
-  args: ^1.5.2
+  args: ^1.5.3
   grpc:
     path: ../../../grpc-dart
   protobuf: ^1.0.1
