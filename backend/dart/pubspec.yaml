@@ -6,7 +6,7 @@ environment:
 dependencies:
   args: ^1.5.2
   grpc:
-    path: ../../grpc-dart
+    path: ../../../grpc-dart
   protobuf: ^1.0.1
   postgres_pool: ^2.0.0
   uuid: ^2.0.4

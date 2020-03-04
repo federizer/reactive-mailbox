@@ -165,7 +165,7 @@ packages:
   grpc:
     dependency: "direct main"
     description:
-      path: "../../grpc-dart"
+      path: "../../../grpc-dart"
       relative: true
     source: path
     version: "2.1.3"
