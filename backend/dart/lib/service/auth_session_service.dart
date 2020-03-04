@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:grpc/grpc.dart';
 
 import 'package:server/api/generated/google/protobuf/empty.pb.dart';
-import 'package:server/api/generated/auth/auth.pb.dart';
-import 'package:server/api/generated/auth/auth_session.pbgrpc.dart';
+import 'package:server/api/generated/auth.pb.dart';
+import 'package:server/api/generated/auth_session.pbgrpc.dart';
 
 import 'package:server/storage/auth_session_storage.dart';
 

@@ -7,19 +7,19 @@ build-proto:
 	protoc -I$(GOOGLEAPIS_DIR) \
 			-I/usr/local/include \
 			-I api/proto/v1 \
-			--dart_out=grpc:backend/dart/lib/api/generated/system \
+			--dart_out=grpc:backend/dart/lib/api/generated \
 			system.proto
 
 	protoc -I$(GOOGLEAPIS_DIR) \
 			-I/usr/local/include \
 			-I api/proto/v1 \
-			--dart_out=grpc:backend/dart/lib/api/generated/auth \
+			--dart_out=grpc:backend/dart/lib/api/generated \
 			auth.proto
 
 	protoc -I$(GOOGLEAPIS_DIR) \
 			-I/usr/local/include \
 			-I api/proto/v1 \
-			--dart_out=grpc:backend/dart/lib/api/generated/auth \
+			--dart_out=grpc:backend/dart/lib/api/generated \
 			auth_session.proto
 
 	protoc -I$(GOOGLEAPIS_DIR) \
@@ -53,9 +53,7 @@ build-proto:
 			$(GOOGLEAPIS_DIR)/google/protobuf/empty.proto
 
 clean:
-	rm -r backend/dart/lib/api/generated/system/*
-	rm -r backend/dart/lib/api/generated/auth/*
-	rm -r backend/dart/lib/api/generated/google/*
+	rm -r backend/dart/lib/api/generated/*
 	rm -r backend/go/api/generated/system/*
 	rm -r backend/go/api/generated/auth/*
 	rm -r backend/go/api/generated/google/*
