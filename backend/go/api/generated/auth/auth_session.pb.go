@@ -94,24 +94,24 @@ func init() {
 func init() { proto.RegisterFile("auth_session.proto", fileDescriptor_1e911775d81dccc1) }
 
 var fileDescriptor_1e911775d81dccc1 = []byte{
-	// 262 bytes of a gzipped FileDescriptorProto
+	// 259 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0xcf, 0x4b, 0xc3, 0x30,
-	0x14, 0x80, 0x17, 0x9d, 0xd3, 0xbd, 0x4e, 0xc5, 0xf8, 0x83, 0xb2, 0x53, 0xad, 0x08, 0x3d, 0x0d,
-	0xe9, 0x3c, 0x78, 0xf5, 0xb8, 0x93, 0x90, 0xba, 0x73, 0xa9, 0xe5, 0xd5, 0x06, 0x21, 0xa9, 0x79,
-	0x89, 0xff, 0x97, 0x57, 0xff, 0x3a, 0x49, 0xd3, 0x61, 0xf1, 0xb2, 0x4b, 0xa1, 0x5f, 0xbe, 0x2f,
-	0xc9, 0x0b, 0xf0, 0xca, 0xd9, 0xb6, 0x24, 0x24, 0x92, 0x5a, 0xad, 0x3a, 0xa3, 0xad, 0xe6, 0x53,
-	0xcf, 0x96, 0xe0, 0xbf, 0x81, 0xa4, 0xdf, 0x0c, 0xa2, 0x67, 0x67, 0xdb, 0x22, 0x78, 0xfc, 0x1e,
-	0x8e, 0xc8, 0x56, 0x16, 0x63, 0x96, 0xb0, 0xec, 0x2c, 0x3f, 0x5f, 0xf5, 0x6e, 0x6f, 0x78, 0x2c,
-	0xc2, 0x2a, 0xbf, 0x85, 0x45, 0x55, 0xd7, 0x48, 0x54, 0x5a, 0xfd, 0x81, 0x2a, 0x3e, 0x48, 0x58,
-	0x36, 0x17, 0x51, 0x60, 0xaf, 0x1e, 0xf1, 0x3b, 0x38, 0x35, 0xd8, 0x18, 0xa4, 0x76, 0x70, 0x0e,
-	0x7b, 0x67, 0x31, 0xc0, 0x20, 0xad, 0x61, 0xee, 0x08, 0x4d, 0x29, 0x55, 0xa3, 0xe3, 0x69, 0xc2,
-	0xb2, 0x28, 0xbf, 0x09, 0x47, 0x6e, 0x09, 0xcd, 0x46, 0x35, 0x5a, 0x20, 0x75, 0x5a, 0x11, 0x8a,
-	0x13, 0x37, 0x90, 0xfc, 0x87, 0x01, 0x1f, 0xdd, 0xb9, 0x40, 0xf3, 0x25, 0x6b, 0xe4, 0x8f, 0x30,
-	0x2b, 0xe4, 0xbb, 0x72, 0x1d, 0xbf, 0x0c, 0x5b, 0xf8, 0xbf, 0x6d, 0x27, 0xf0, 0xd3, 0x21, 0xd9,
-	0xe5, 0xc5, 0x68, 0x94, 0x10, 0xa6, 0x93, 0x07, 0xb6, 0xab, 0xa4, 0x1a, 0x57, 0x1b, 0xb5, 0xa7,
-	0x7a, 0x82, 0x63, 0xef, 0x69, 0x67, 0xf9, 0xd5, 0x5f, 0xf6, 0xe2, 0xec, 0xae, 0xbb, 0xfe, 0x47,
-	0xc3, 0x10, 0xe9, 0xe4, 0x6d, 0xd6, 0xbf, 0xfb, 0xfa, 0x37, 0x00, 0x00, 0xff, 0xff, 0xe8, 0xd4,
-	0xff, 0x0c, 0x9f, 0x01, 0x00, 0x00,
+	0x14, 0x80, 0x17, 0x9d, 0xd3, 0xa5, 0x53, 0x31, 0xfe, 0xa0, 0xec, 0x54, 0x2b, 0x42, 0x4f, 0x43,
+	0x3a, 0x0f, 0x5e, 0x3d, 0xee, 0x24, 0x74, 0xee, 0x5c, 0x6a, 0x79, 0xb5, 0x41, 0x48, 0x6a, 0xde,
+	0x8b, 0xff, 0x97, 0xf8, 0x0f, 0x4a, 0xfa, 0x3a, 0x1d, 0x5e, 0xbc, 0x14, 0xfa, 0xe5, 0xfb, 0xc8,
+	0x7b, 0x91, 0xaa, 0xf2, 0xd4, 0x96, 0x08, 0x88, 0xda, 0x9a, 0x45, 0xe7, 0x2c, 0x59, 0x35, 0x0e,
+	0x6c, 0x2e, 0xc3, 0x97, 0x49, 0xfa, 0x29, 0x64, 0xf4, 0xe8, 0xa9, 0x5d, 0xb3, 0xa7, 0x6e, 0xe5,
+	0x01, 0x52, 0x45, 0x10, 0x8b, 0x44, 0x64, 0x27, 0xf9, 0xe9, 0xa2, 0x77, 0x7b, 0x23, 0xe0, 0x82,
+	0x4f, 0xd5, 0xb5, 0x9c, 0x55, 0x75, 0x0d, 0x88, 0x25, 0xd9, 0x37, 0x30, 0xf1, 0x5e, 0x22, 0xb2,
+	0x69, 0x11, 0x31, 0x7b, 0x0e, 0x48, 0xdd, 0xc8, 0x63, 0x07, 0x8d, 0x03, 0x6c, 0x07, 0x67, 0xbf,
+	0x77, 0x66, 0x03, 0x64, 0x69, 0x29, 0xa7, 0x1e, 0xc1, 0x95, 0xda, 0x34, 0x36, 0x1e, 0x27, 0x22,
+	0x8b, 0xf2, 0x2b, 0xbe, 0x72, 0x83, 0xe0, 0x56, 0xa6, 0xb1, 0x05, 0x60, 0x67, 0x0d, 0x42, 0x71,
+	0xe4, 0x07, 0x92, 0x7f, 0xfd, 0xcc, 0xec, 0x3e, 0x74, 0x0d, 0xea, 0x5e, 0x4e, 0xd6, 0xfa, 0xd5,
+	0xf8, 0x4e, 0x9d, 0x73, 0x1b, 0xfe, 0x36, 0x5d, 0x01, 0xef, 0x1e, 0x90, 0xe6, 0x67, 0x3b, 0x3b,
+	0xf0, 0x96, 0xe9, 0xe8, 0x4e, 0x6c, 0x2b, 0x6d, 0x76, 0xab, 0x95, 0xf9, 0xa7, 0x7a, 0x90, 0x87,
+	0xc1, 0xb3, 0x9e, 0xd4, 0xc5, 0x6f, 0xf6, 0xe4, 0x69, 0xdb, 0x5d, 0xfe, 0xa1, 0x3c, 0x7d, 0x3a,
+	0x7a, 0x99, 0xf4, 0x0f, 0xbe, 0xfc, 0x0e, 0x00, 0x00, 0xff, 0xff, 0x14, 0xf3, 0xe1, 0x7f, 0x98,
+	0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -122,29 +122,29 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// AuthSessionServiceClient is the client API for AuthSessionService service.
+// AuthServiceClient is the client API for AuthService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type AuthSessionServiceClient interface {
-	Signup(ctx context.Context, in *SignUpRequest, opts ...grpc.CallOption) (AuthSessionService_SignupClient, error)
-	Signin(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (AuthSessionService_SigninClient, error)
+type AuthServiceClient interface {
+	Signup(ctx context.Context, in *SignUpRequest, opts ...grpc.CallOption) (AuthService_SignupClient, error)
+	Signin(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (AuthService_SigninClient, error)
 	Signout(ctx context.Context, in *SignOutRequest, opts ...grpc.CallOption) (*SignOutResponse, error)
 }
 
-type authSessionServiceClient struct {
+type authServiceClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewAuthSessionServiceClient(cc *grpc.ClientConn) AuthSessionServiceClient {
-	return &authSessionServiceClient{cc}
+func NewAuthServiceClient(cc *grpc.ClientConn) AuthServiceClient {
+	return &authServiceClient{cc}
 }
 
-func (c *authSessionServiceClient) Signup(ctx context.Context, in *SignUpRequest, opts ...grpc.CallOption) (AuthSessionService_SignupClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_AuthSessionService_serviceDesc.Streams[0], "/auth.AuthSessionService/Signup", opts...)
+func (c *authServiceClient) Signup(ctx context.Context, in *SignUpRequest, opts ...grpc.CallOption) (AuthService_SignupClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_AuthService_serviceDesc.Streams[0], "/auth.AuthService/Signup", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &authSessionServiceSignupClient{stream}
+	x := &authServiceSignupClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -154,16 +154,16 @@ func (c *authSessionServiceClient) Signup(ctx context.Context, in *SignUpRequest
 	return x, nil
 }
 
-type AuthSessionService_SignupClient interface {
+type AuthService_SignupClient interface {
 	Recv() (*AuthSession, error)
 	grpc.ClientStream
 }
 
-type authSessionServiceSignupClient struct {
+type authServiceSignupClient struct {
 	grpc.ClientStream
 }
 
-func (x *authSessionServiceSignupClient) Recv() (*AuthSession, error) {
+func (x *authServiceSignupClient) Recv() (*AuthSession, error) {
 	m := new(AuthSession)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -171,12 +171,12 @@ func (x *authSessionServiceSignupClient) Recv() (*AuthSession, error) {
 	return m, nil
 }
 
-func (c *authSessionServiceClient) Signin(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (AuthSessionService_SigninClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_AuthSessionService_serviceDesc.Streams[1], "/auth.AuthSessionService/Signin", opts...)
+func (c *authServiceClient) Signin(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (AuthService_SigninClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_AuthService_serviceDesc.Streams[1], "/auth.AuthService/Signin", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &authSessionServiceSigninClient{stream}
+	x := &authServiceSigninClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -186,16 +186,16 @@ func (c *authSessionServiceClient) Signin(ctx context.Context, in *SignInRequest
 	return x, nil
 }
 
-type AuthSessionService_SigninClient interface {
+type AuthService_SigninClient interface {
 	Recv() (*AuthSession, error)
 	grpc.ClientStream
 }
 
-type authSessionServiceSigninClient struct {
+type authServiceSigninClient struct {
 	grpc.ClientStream
 }
 
-func (x *authSessionServiceSigninClient) Recv() (*AuthSession, error) {
+func (x *authServiceSigninClient) Recv() (*AuthSession, error) {
 	m := new(AuthSession)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -203,118 +203,118 @@ func (x *authSessionServiceSigninClient) Recv() (*AuthSession, error) {
 	return m, nil
 }
 
-func (c *authSessionServiceClient) Signout(ctx context.Context, in *SignOutRequest, opts ...grpc.CallOption) (*SignOutResponse, error) {
+func (c *authServiceClient) Signout(ctx context.Context, in *SignOutRequest, opts ...grpc.CallOption) (*SignOutResponse, error) {
 	out := new(SignOutResponse)
-	err := c.cc.Invoke(ctx, "/auth.AuthSessionService/Signout", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/auth.AuthService/Signout", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AuthSessionServiceServer is the server API for AuthSessionService service.
-type AuthSessionServiceServer interface {
-	Signup(*SignUpRequest, AuthSessionService_SignupServer) error
-	Signin(*SignInRequest, AuthSessionService_SigninServer) error
+// AuthServiceServer is the server API for AuthService service.
+type AuthServiceServer interface {
+	Signup(*SignUpRequest, AuthService_SignupServer) error
+	Signin(*SignInRequest, AuthService_SigninServer) error
 	Signout(context.Context, *SignOutRequest) (*SignOutResponse, error)
 }
 
-// UnimplementedAuthSessionServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedAuthSessionServiceServer struct {
+// UnimplementedAuthServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAuthServiceServer struct {
 }
 
-func (*UnimplementedAuthSessionServiceServer) Signup(req *SignUpRequest, srv AuthSessionService_SignupServer) error {
+func (*UnimplementedAuthServiceServer) Signup(req *SignUpRequest, srv AuthService_SignupServer) error {
 	return status.Errorf(codes.Unimplemented, "method Signup not implemented")
 }
-func (*UnimplementedAuthSessionServiceServer) Signin(req *SignInRequest, srv AuthSessionService_SigninServer) error {
+func (*UnimplementedAuthServiceServer) Signin(req *SignInRequest, srv AuthService_SigninServer) error {
 	return status.Errorf(codes.Unimplemented, "method Signin not implemented")
 }
-func (*UnimplementedAuthSessionServiceServer) Signout(ctx context.Context, req *SignOutRequest) (*SignOutResponse, error) {
+func (*UnimplementedAuthServiceServer) Signout(ctx context.Context, req *SignOutRequest) (*SignOutResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Signout not implemented")
 }
 
-func RegisterAuthSessionServiceServer(s *grpc.Server, srv AuthSessionServiceServer) {
-	s.RegisterService(&_AuthSessionService_serviceDesc, srv)
+func RegisterAuthServiceServer(s *grpc.Server, srv AuthServiceServer) {
+	s.RegisterService(&_AuthService_serviceDesc, srv)
 }
 
-func _AuthSessionService_Signup_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _AuthService_Signup_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(SignUpRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(AuthSessionServiceServer).Signup(m, &authSessionServiceSignupServer{stream})
+	return srv.(AuthServiceServer).Signup(m, &authServiceSignupServer{stream})
 }
 
-type AuthSessionService_SignupServer interface {
+type AuthService_SignupServer interface {
 	Send(*AuthSession) error
 	grpc.ServerStream
 }
 
-type authSessionServiceSignupServer struct {
+type authServiceSignupServer struct {
 	grpc.ServerStream
 }
 
-func (x *authSessionServiceSignupServer) Send(m *AuthSession) error {
+func (x *authServiceSignupServer) Send(m *AuthSession) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _AuthSessionService_Signin_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _AuthService_Signin_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(SignInRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(AuthSessionServiceServer).Signin(m, &authSessionServiceSigninServer{stream})
+	return srv.(AuthServiceServer).Signin(m, &authServiceSigninServer{stream})
 }
 
-type AuthSessionService_SigninServer interface {
+type AuthService_SigninServer interface {
 	Send(*AuthSession) error
 	grpc.ServerStream
 }
 
-type authSessionServiceSigninServer struct {
+type authServiceSigninServer struct {
 	grpc.ServerStream
 }
 
-func (x *authSessionServiceSigninServer) Send(m *AuthSession) error {
+func (x *authServiceSigninServer) Send(m *AuthSession) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _AuthSessionService_Signout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AuthService_Signout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignOutRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthSessionServiceServer).Signout(ctx, in)
+		return srv.(AuthServiceServer).Signout(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/auth.AuthSessionService/Signout",
+		FullMethod: "/auth.AuthService/Signout",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthSessionServiceServer).Signout(ctx, req.(*SignOutRequest))
+		return srv.(AuthServiceServer).Signout(ctx, req.(*SignOutRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _AuthSessionService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "auth.AuthSessionService",
-	HandlerType: (*AuthSessionServiceServer)(nil),
+var _AuthService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "auth.AuthService",
+	HandlerType: (*AuthServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Signout",
-			Handler:    _AuthSessionService_Signout_Handler,
+			Handler:    _AuthService_Signout_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "Signup",
-			Handler:       _AuthSessionService_Signup_Handler,
+			Handler:       _AuthService_Signup_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "Signin",
-			Handler:       _AuthSessionService_Signin_Handler,
+			Handler:       _AuthService_Signin_Handler,
 			ServerStreams: true,
 		},
 	},

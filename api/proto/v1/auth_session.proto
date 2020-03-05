@@ -12,7 +12,7 @@ message AuthSession {
     UserInfoResponse user_info = 4;
 }
 
-service AuthSessionService {
+service AuthService {
     rpc Signup (SignUpRequest) returns (stream AuthSession) {
     }
     rpc Signin (SignInRequest) returns (stream AuthSession) {

@@ -5,9 +5,9 @@ import 'package:server/api/generated/google/protobuf/empty.pb.dart';
 import 'package:server/api/generated/auth.pb.dart';
 import 'package:server/api/generated/auth_session.pbgrpc.dart';
 
-import 'package:server/storage/auth_session_storage.dart';
+import 'package:server/storage/auth.dart' as storage;
 
-class AuthSessionService extends AuthSessionServiceBase {
+class AuthService extends AuthServiceBase {
   StreamController<AuthSession> _controllerAuthSession =
   StreamController<AuthSession>.broadcast(onListen: () {
     print("onListen");
@@ -17,7 +17,7 @@ class AuthSessionService extends AuthSessionServiceBase {
 
   @override
   Stream<AuthSession> signup(ServiceCall call, SignUpRequest request) async* {
-    yield* AuthSessionStorage.signup(request);
+    yield* storage.AuthSessionStorage.signup(request);
     /*if (request.credentials.username.compareTo('Mike') == 0 &&
         request.credentials.password.compareTo('1234') == 0) {
       yield AuthSession()

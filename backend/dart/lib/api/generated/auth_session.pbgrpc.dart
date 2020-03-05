@@ -14,24 +14,23 @@ import 'auth.pb.dart' as $0;
 import 'auth_session.pb.dart' as $1;
 export 'auth_session.pb.dart';
 
-class AuthSessionServiceClient extends $grpc.Client {
+class AuthServiceClient extends $grpc.Client {
   static final _$signup = $grpc.ClientMethod<$0.SignUpRequest, $1.AuthSession>(
-      '/auth.AuthSessionService/Signup',
+      '/auth.AuthService/Signup',
       ($0.SignUpRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.AuthSession.fromBuffer(value));
   static final _$signin = $grpc.ClientMethod<$0.SignInRequest, $1.AuthSession>(
-      '/auth.AuthSessionService/Signin',
+      '/auth.AuthService/Signin',
       ($0.SignInRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.AuthSession.fromBuffer(value));
   static final _$signout =
       $grpc.ClientMethod<$0.SignOutRequest, $0.SignOutResponse>(
-          '/auth.AuthSessionService/Signout',
+          '/auth.AuthService/Signout',
           ($0.SignOutRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.SignOutResponse.fromBuffer(value));
 
-  AuthSessionServiceClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options})
+  AuthServiceClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
 
   $grpc.ResponseStream<$1.AuthSession> signup($0.SignUpRequest request,
@@ -56,10 +55,10 @@ class AuthSessionServiceClient extends $grpc.Client {
   }
 }
 
-abstract class AuthSessionServiceBase extends $grpc.Service {
-  $core.String get $name => 'auth.AuthSessionService';
+abstract class AuthServiceBase extends $grpc.Service {
+  $core.String get $name => 'auth.AuthService';
 
-  AuthSessionServiceBase() {
+  AuthServiceBase() {
     $addMethod($grpc.ServiceMethod<$0.SignUpRequest, $1.AuthSession>(
         'Signup',
         signup_Pre,
