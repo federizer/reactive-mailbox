@@ -5,8 +5,8 @@ import (
 	"database/sql"
 	"fmt"
 	pbsystem "github.com/federizer/reactive-mailbox/api/generated/system"
-	service "github.com/federizer/reactive-mailbox/service"
-	storage "github.com/federizer/reactive-mailbox/storage/sql"
+	grpcservices "github.com/federizer/reactive-mailbox/grpc_services"
+	services "github.com/federizer/reactive-mailbox/services"
 
 	"github.com/federizer/reactive-mailbox/pkg/config"
 	"github.com/federizer/reactive-mailbox/repository"
@@ -177,7 +177,7 @@ func serve() error {
 		)
 	}
 
-	pbsystem.RegisterSystemServiceServer(grpcServer, &storage.SystemStorageImpl{DB})
+	pbsystem.RegisterSystemServiceServer(grpcServer, &grpcservices.SystemStorageImpl{DB})
 	// pb.RegisterDraftServiceServer(grpcServer, &database.DraftServerImpl{DB})
 	// pb.RegisterDraftServiceServer(grpcServer, &database.MessageServerImpl{DB})
 	// pb.RegisterAuthServer(grpcServer, &oidc.UserInfoImpl{})
@@ -227,8 +227,8 @@ func serve() error {
 		),
 	}
 
-	systemstorage := &service.SystemStorageImpl{DB}
-	draftstorage := &service.DraftStorageImpl{DB}
+	systemstorage := &services.SystemStorageImpl{DB}
+	draftstorage := &services.DraftStorageImpl{DB}
 
 	restMux.HandleFunc("/alive", systemstorage.Alive)
 	restMux.HandleFunc("/drafts", draftstorage.ListDrafts)
