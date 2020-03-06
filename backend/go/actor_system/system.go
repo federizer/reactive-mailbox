@@ -1,9 +1,9 @@
-package system
+package actor_system
 
 import (
-	"github.com/federizer/reactive-mailbox/system/actor"
-	"github.com/federizer/reactive-mailbox/system/errors"
-	"github.com/federizer/reactive-mailbox/system/mailbox"
+	"github.com/federizer/reactive-mailbox/actor_system/actor"
+	"github.com/federizer/reactive-mailbox/actor_system/errors"
+	"github.com/federizer/reactive-mailbox/actor_system/mailbox"
 	"sync"
 )
 

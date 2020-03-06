@@ -1,6 +1,6 @@
 package mailbox
 
-import "github.com/federizer/reactive-mailbox/system/actor"
+import "github.com/federizer/reactive-mailbox/actor_system/actor"
 
 type queue_item struct {
 	next    *queue_item

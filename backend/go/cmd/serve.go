@@ -4,6 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	actorsystem "github.com/federizer/reactive-mailbox/actor_system"
+	"github.com/federizer/reactive-mailbox/actor_system/actor"
+	"github.com/federizer/reactive-mailbox/actor_system/errors"
 	pbsystem "github.com/federizer/reactive-mailbox/api/generated/system"
 	grpcservices "github.com/federizer/reactive-mailbox/grpc_services"
 	services "github.com/federizer/reactive-mailbox/services"
@@ -89,6 +92,54 @@ func decodeHookWithTag(hook mapstructure.DecodeHookFunc, tagName string) viper.D
 	}
 }*/
 
+type TerminateMessage struct{}
+
+type PingPongActor struct {
+	system        actor.System
+	pid           actor.Pid
+	pong_received chan struct{}
+}
+
+type PingMessage struct {
+	from actor.Pid
+}
+
+type PongMessage struct {
+	from actor.Pid
+}
+
+type SendPingMessage struct {
+	to            actor.Pid
+	pong_received chan struct{}
+}
+
+func (a *PingPongActor) Receive(message actor.Message) (actor.Actor, error) {
+	switch v := message.(type) {
+	case SendPingMessage:
+		a.pong_received = v.pong_received
+		_ = a.system.Send(v.to, PingMessage{from: a.pid})
+		return a, nil
+	case PingMessage:
+		_ = a.system.Send(v.from, PongMessage{from: a.pid})
+		return a, nil
+	case PongMessage:
+		a.pong_received <- struct{}{}
+		return a, nil
+	case TerminateMessage:
+		return a, errors.Terminate
+	default:
+		return a, fmt.Errorf("Don't know what to do with %T", v)
+	}
+}
+
+func newPingPongActor(system actor.System, pid actor.Pid) (state actor.Actor, limit int) {
+	state = &PingPongActor{
+		system: system,
+		pid:    pid,
+	}
+	return
+}
+
 func serve() error {
 	// unmarshal config into Struct
 	var c config.Config
@@ -136,9 +187,22 @@ func serve() error {
 	}
 
 	var (
-		grpcServer    *grpc.Server
-		wrappedServer *grpcweb.WrappedGrpcServer
+		mailbox_system actor.System
+		grpcServer     *grpc.Server
+		wrappedServer  *grpcweb.WrappedGrpcServer
 	)
+
+	mailbox_system = actorsystem.New()
+	pong_received := make(chan struct{}, 1)
+	pid1 := mailbox_system.Spawn(newPingPongActor)
+	pid2 := mailbox_system.Spawn(newPingPongActor)
+	err = mailbox_system.Send(pid1, SendPingMessage{to: pid2, pong_received: pong_received})
+	if err == nil {
+		<-pong_received
+		err = mailbox_system.Send(pid1, TerminateMessage{})
+		err = mailbox_system.Send(pid2, TerminateMessage{})
+	}
+	mailbox_system.AwaitTermination()
 
 	db, err := c.Database.Config.Open()
 	if db != nil {
