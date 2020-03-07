@@ -100,7 +100,9 @@ func (s *AuthStorageImpl) Signin(in *pbauth.SignInRequest, srv pbauth.AuthServic
 }
 
 func (s *AuthStorageImpl) Signout(ctx context.Context, in *pbauth.SignOutRequest) (*pbauth.SignOutResponse, error) {
+	s.Mu.RLock()
 	client := s.SignInClients[in.RefreshToken]
+	s.Mu.RUnlock()
 
 	if client == nil {
 		return nil, errors.New("client not found")
