@@ -4,8 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"github.com/federizer/reactive-mailbox/actor_system/actor"
-	"github.com/federizer/reactive-mailbox/actor_system/errors"
 	pbauth "github.com/federizer/reactive-mailbox/api/generated/auth"
 	pbsystem "github.com/federizer/reactive-mailbox/api/generated/system"
 	grpcservices "github.com/federizer/reactive-mailbox/grpc_services"
@@ -91,54 +89,6 @@ func decodeHookWithTag(hook mapstructure.DecodeHookFunc, tagName string) viper.D
 		c.TagName = tagName
 	}
 }*/
-
-type TerminateMessage struct{}
-
-type PingPongActor struct {
-	system        actor.System
-	pid           actor.Pid
-	pong_received chan struct{}
-}
-
-type PingMessage struct {
-	from actor.Pid
-}
-
-type PongMessage struct {
-	from actor.Pid
-}
-
-type SendPingMessage struct {
-	to            actor.Pid
-	pong_received chan struct{}
-}
-
-func (a *PingPongActor) Receive(message actor.Message) (actor.Actor, error) {
-	switch v := message.(type) {
-	case SendPingMessage:
-		a.pong_received = v.pong_received
-		_ = a.system.Send(v.to, PingMessage{from: a.pid})
-		return a, nil
-	case PingMessage:
-		_ = a.system.Send(v.from, PongMessage{from: a.pid})
-		return a, nil
-	case PongMessage:
-		a.pong_received <- struct{}{}
-		return a, nil
-	case TerminateMessage:
-		return a, errors.Terminate
-	default:
-		return a, fmt.Errorf("Don't know what to do with %T", v)
-	}
-}
-
-func newPingPongActor(system actor.System, pid actor.Pid) (state actor.Actor, limit int) {
-	state = &PingPongActor{
-		system: system,
-		pid:    pid,
-	}
-	return
-}
 
 func serve() error {
 	// unmarshal config into Struct
