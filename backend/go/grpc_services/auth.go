@@ -3,6 +3,7 @@ package grpc_services
 import (
 	"context"
 	"database/sql"
+	"errors"
 	pbauth "github.com/federizer/reactive-mailbox/api/generated/auth"
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
@@ -54,6 +55,19 @@ func (s *AuthStorageImpl) Signup(in *pbauth.SignUpRequest, srv pbauth.AuthServic
 	authSession.AccessToken = "accessToken123"
 	authSession.RefreshToken = "refreshToken123"
 
+	if err := srv.Send(&authSession); err != nil {
+		log.Printf("send err: %v", err)
+		return err
+	}
+
+	for {
+		err := srv.Context().Err()
+		if err != nil {
+			break
+		}
+		time.Sleep(100 * time.Millisecond)
+	}
+
 	return nil
 }
 
@@ -86,6 +100,20 @@ func (s *AuthStorageImpl) Signin(in *pbauth.SignInRequest, srv pbauth.AuthServic
 }
 
 func (s *AuthStorageImpl) Signout(ctx context.Context, in *pbauth.SignOutRequest) (*pbauth.SignOutResponse, error) {
+	client := s.SignInClients[in.RefreshToken]
+
+	if client == nil {
+		return nil, errors.New("client not found")
+	}
+
+	authSession := pbauth.AuthSession{}
+	authSession.State = pbauth.AuthState_USER_SIGNED_OUT
+
+	if err := client.Send(&authSession); err != nil {
+		log.Printf("send err: %v", err)
+		return nil, err
+	}
+
 	signoutResponse := pbauth.SignOutResponse{}
 	signoutResponse.State = pbauth.AuthState_USER_SIGNED_OUT
 
