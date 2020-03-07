@@ -4,15 +4,14 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	actorsystem "github.com/federizer/reactive-mailbox/actor_system"
 	"github.com/federizer/reactive-mailbox/actor_system/actor"
 	"github.com/federizer/reactive-mailbox/actor_system/errors"
+	pbauth "github.com/federizer/reactive-mailbox/api/generated/auth"
 	pbsystem "github.com/federizer/reactive-mailbox/api/generated/system"
 	grpcservices "github.com/federizer/reactive-mailbox/grpc_services"
-	services "github.com/federizer/reactive-mailbox/services"
-
 	"github.com/federizer/reactive-mailbox/pkg/config"
 	"github.com/federizer/reactive-mailbox/repository"
+	services "github.com/federizer/reactive-mailbox/services"
 	"github.com/federizer/reactive-mailbox/session"
 	grpcmiddleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpcrecovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
@@ -28,6 +27,7 @@ import (
 	"os"
 	"os/signal"
 	"strings"
+	"sync"
 	"syscall"
 )
 
@@ -187,22 +187,9 @@ func serve() error {
 	}
 
 	var (
-		mailbox_system actor.System
-		grpcServer     *grpc.Server
-		wrappedServer  *grpcweb.WrappedGrpcServer
+		grpcServer    *grpc.Server
+		wrappedServer *grpcweb.WrappedGrpcServer
 	)
-
-	mailbox_system = actorsystem.New()
-	pong_received := make(chan struct{}, 1)
-	pid1 := mailbox_system.Spawn(newPingPongActor)
-	pid2 := mailbox_system.Spawn(newPingPongActor)
-	err = mailbox_system.Send(pid1, SendPingMessage{to: pid2, pong_received: pong_received})
-	if err == nil {
-		<-pong_received
-		err = mailbox_system.Send(pid1, TerminateMessage{})
-		err = mailbox_system.Send(pid2, TerminateMessage{})
-	}
-	mailbox_system.AwaitTermination()
 
 	db, err := c.Database.Config.Open()
 	if db != nil {
@@ -242,6 +229,10 @@ func serve() error {
 	}
 
 	pbsystem.RegisterSystemServiceServer(grpcServer, &grpcservices.SystemStorageImpl{DB})
+	pbauth.RegisterAuthServiceServer(grpcServer, &grpcservices.AuthStorageImpl{DB: DB,
+		SignUpClients: make(map[string]pbauth.AuthService_SignupServer),
+		SignInClients: make(map[string]pbauth.AuthService_SigninServer),
+		Mu:            sync.RWMutex{}})
 	// pb.RegisterDraftServiceServer(grpcServer, &database.DraftServerImpl{DB})
 	// pb.RegisterDraftServiceServer(grpcServer, &database.MessageServerImpl{DB})
 	// pb.RegisterAuthServer(grpcServer, &oidc.UserInfoImpl{})
