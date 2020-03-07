@@ -8,7 +8,6 @@ import (
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
 	"sync"
-	"time"
 )
 
 type AuthStorageImpl struct {
@@ -61,14 +60,11 @@ func (s *AuthStorageImpl) Signup(in *pbauth.SignUpRequest, srv pbauth.AuthServic
 	}
 
 	for {
-		err := srv.Context().Err()
-		if err != nil {
-			break
+		select {
+		case <-srv.Context().Done():
+			return srv.Context().Err()
 		}
-		time.Sleep(100 * time.Millisecond)
 	}
-
-	return nil
 }
 
 func (s *AuthStorageImpl) Signin(in *pbauth.SignInRequest, srv pbauth.AuthService_SigninServer) error {
@@ -89,14 +85,11 @@ func (s *AuthStorageImpl) Signin(in *pbauth.SignInRequest, srv pbauth.AuthServic
 	}
 
 	for {
-		err := srv.Context().Err()
-		if err != nil {
-			break
+		select {
+		case <-srv.Context().Done():
+			return srv.Context().Err()
 		}
-		time.Sleep(100 * time.Millisecond)
 	}
-
-	return nil
 }
 
 func (s *AuthStorageImpl) Signout(ctx context.Context, in *pbauth.SignOutRequest) (*pbauth.SignOutResponse, error) {
