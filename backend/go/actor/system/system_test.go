@@ -1,9 +1,9 @@
 package system
 
 import (
-	".."
-	"../errors"
 	"fmt"
+	"github.com/federizer/reactive-mailbox/actor"
+	"github.com/federizer/reactive-mailbox/actor/errors"
 	"github.com/stretchr/testify/require"
 	"testing"
 	"time"

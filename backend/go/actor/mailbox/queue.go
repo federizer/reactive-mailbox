@@ -1,15 +1,15 @@
 package mailbox
 
-import "../../actor"
+import "github.com/federizer/reactive-mailbox/actor"
 
 type queue_item struct {
-	next *queue_item
-	prev *queue_item
+	next    *queue_item
+	prev    *queue_item
 	payload actor.Message
 }
 
 type queue struct {
-	len int
+	len  int
 	head queue_item
 }
 
@@ -29,7 +29,7 @@ func (q *queue) length() int {
 }
 
 func (q *queue) enqueue(payload actor.Message) {
-	new :=  &queue_item{
+	new := &queue_item{
 		payload: payload,
 	}
 
