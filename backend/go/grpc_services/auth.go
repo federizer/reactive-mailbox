@@ -6,6 +6,7 @@ import (
 	"errors"
 	pbauth "github.com/federizer/reactive-mailbox/api/generated/auth"
 	"github.com/google/uuid"
+	"github.com/reactivex/rxgo/v2"
 	log "github.com/sirupsen/logrus"
 	"sync"
 )
@@ -83,6 +84,17 @@ func (s *AuthStorageImpl) Signin(in *pbauth.SignInRequest, srv pbauth.AuthServic
 		log.Printf("send err: %v", err)
 		return err
 	}
+
+	/*rxgo.Just(srv)(rxgo.WithContext(srv.Context())).Map(func(ctx context.Context, item interface{}) (ss interface{}, err error) {
+		return &item, nil
+	}).Observe()*/
+
+	observable := rxgo.Just(in)(rxgo.WithContext(srv.Context())).Filter(func(resp interface{}) bool {
+		as := resp.(*pbauth.SignInRequest)
+		return as.GetCredentials().Username == "David2"
+	})
+
+	observable.Observe()
 
 	for {
 		select {
