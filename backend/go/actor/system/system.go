@@ -7,6 +7,80 @@ import (
 	"sync"
 )
 
+/////////////////////////////////////////////////////////////////////////////////
+// Actor Outline in Go
+
+// Actor -> struct
+// + goroutine
+
+// Mailbox -> chan
+
+//func StartActor() *Actor {
+//	ch := make(chan action, size)
+//	actor := &Actor{...}
+//	go actor actorLoop(ch)
+//	return actor
+//}
+
+//func (actor *Actor) DoSomething() {
+//	actor.actionChan <- something
+//}
+
+//func (actor *Actor) actorLoop(ch <-chan action) {
+//	for {
+//		action := ch
+//		// deal with action
+//	}
+//}
+
+// ConnectionMaker in Go
+
+//type action func()
+//
+//func (cm ConnectionMaker) Add(address string) {
+//	cm.actionChan <- func() {
+//		cm.addConnection(address)
+//	}
+//}
+
+// ConnectionMaker Loop
+
+//func (cm *ConnectionMaker) actionLoop(ch <- action) {
+//	timer := time.NewTimer(duration)
+//	for {
+//		select {
+//		case action := <-ch:
+//			action()
+//		case <-timer.C:
+//			retryConnections()
+//		}
+//	}
+//}
+
+// Actions with return values
+
+//func (cm *ConnectionMaker) String() string {
+//	resultChan := make(chan string, 0)
+//	cm.actionChan <- func() {
+//		resultChan <- cm.status
+//	}
+//	return <-resultChan
+//}
+
+// Non-blocking send
+
+//func (actor *SomeActor) TryTo(something) {
+//	select {
+//	case actor.actionChan <- func() {
+//		// do the thing
+//	}:
+//	default:
+//		// chan is full; throw it away
+//	}
+//}
+
+/////////////////////////////////////////////////////////////////////////////////
+
 // system implements actor.System
 type system struct {
 	wg        sync.WaitGroup
