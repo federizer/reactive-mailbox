@@ -1,2 +1,2 @@
-# reactive-mailbox
-Reactive Mailbox
+# reactive-mailbox-app
+Reactive Mailbox App
